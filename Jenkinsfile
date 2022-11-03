@@ -9,5 +9,11 @@ pipeline {
       }
     }
 
+    stage('SonarScanner') {
+      steps {
+        sh './mvnw sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dlicense.skip=true'
+      }
+    }
+
   }
 }
