@@ -5,7 +5,7 @@ pipeline {
       steps {
         sh '''./mvnw package
 '''
-        archiveArtifacts(artifacts: 'build/libs/**/*.jar', allowEmptyArchive: true)
+        archiveArtifacts(artifacts: 'target/*.jar', allowEmptyArchive: true)
       }
     }
 
