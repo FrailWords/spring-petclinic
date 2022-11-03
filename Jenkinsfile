@@ -11,7 +11,7 @@ pipeline {
 
     stage('SonarScanner') {
       steps {
-        sh './mvnw sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sonar -Dsonar.password=sonar -Dlicense.skip=true'
+        sh './mvnw clean deploy sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sonar -Dsonar.password=sonar -Dlicense.skip=true'
       }
     }
 
