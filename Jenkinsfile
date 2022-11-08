@@ -11,9 +11,12 @@ pipeline {
 
     stage('SonarScanner') {
       steps {
-        sh './mvnw clean install sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sonar -Dsonar.password=sonar -Dlicense.skip=true -Dsonar.java.binaries=target/classes/**'
-      }
-    }
-
-  }
+        sh '''withCredentials([usernamePassword(credentialsId: \'sonar\', usernameVariable: \'USERNAME\', passwordVariable: \'PASSWORD\')]) {
+  ./mvnw clean install -Dsonar.host.url=http://localhost:9000 -Dsonar.login=$USERNAME -Dsonar.password=$PASSWORD -Dlicense.skip=true -Dsonar.java.binaries=target/classes/**
 }
+'''
+        }
+      }
+
+    }
+  }
