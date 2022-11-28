@@ -27,6 +27,8 @@ pipeline {
     stage('Deploy') {
       steps {
         sh '''echo $JENKINS_HOME
+cd workspace 
+ls -al
 echo $JOB_NAME
 echo $BUILD_NUMBER
 cd $JENKINS_HOME
