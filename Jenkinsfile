@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage('Package') {
       steps {
-        sh '''
-# ./mvnw package
+        sh '''./mvnw package
                 '''
         archiveArtifacts(artifacts: 'target/*.jar', allowEmptyArchive: true)
       }
