@@ -26,7 +26,15 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh 'ls -l $JENKINS_HOME/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/'
+        sh '''echo $JENKINS_HOME
+echo $JOB_NAME
+echo $BUILD_NUMBER
+cd $JENKINS_HOME
+ls -al
+cd jobs
+cd $JOB_NAME
+ls -al
+ls -l $JENKINS_HOME/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/'''
         ansiblePlaybook(playbook: '/opt/conf/playbook.yml', credentialsId: 'app', disableHostKeyChecking: true)
       }
     }
