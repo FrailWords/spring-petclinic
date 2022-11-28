@@ -6,7 +6,7 @@ pipeline {
         sh '''./mvnw package
                 '''
         archiveArtifacts(artifacts: 'target/*.jar', allowEmptyArchive: true)
-        sh 'cp target/spring-petclinic-2.7.3.jar /opt/conf/spring-petclinic-2.7.3.jar'
+        sh 'cp target/spring-petclinic-2.7.3.jar /opt/spring-petclinic-2.7.3.jar'
       }
     }
 
