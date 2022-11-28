@@ -26,7 +26,7 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        ansiblePlaybook '/opt/conf/playbook.yml'
+        ansiblePlaybook(playbook: '/opt/conf/playbook.yml', credentialsId: 'app', disableHostKeyChecking: true)
       }
     }
 
