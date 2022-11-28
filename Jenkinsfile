@@ -27,13 +27,15 @@ pipeline {
     stage('Deploy') {
       steps {
         sh '''echo $JENKINS_HOME
-cd workspace 
-ls -al
+cd workspaceÂ 
 echo $JOB_NAME
 echo $BUILD_NUMBER
 cd $JENKINS_HOME
 ls -al
+workspace
+ls -al
 cd jobs
+ls -al
 cd $JOB_NAME
 ls -al
 ls -l $JENKINS_HOME/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/'''
