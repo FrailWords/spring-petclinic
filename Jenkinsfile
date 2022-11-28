@@ -6,6 +6,7 @@ pipeline {
         sh '''./mvnw package
                 '''
         archiveArtifacts(artifacts: 'target/*.jar', allowEmptyArchive: true)
+        sh 'cp target/spring-petclinic-2.7.3.jar /opt/conf/spring-petclinic-2.7.3.jar'
       }
     }
 
@@ -14,8 +15,8 @@ pipeline {
         withCredentials(bindings: [usernamePassword(credentialsId: 'sonar', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           script {
             sh '''
-                ./mvnw clean install sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=$USERNAME -Dsonar.password=$PASSWORD -Dlicense.skip=true -Dsonar.java.binaries=target/classes/**
-            '''
+./mvnw clean install sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=$USERNAME -Dsonar.password=$PASSWORD -Dlicense.skip=true -Dsonar.java.binaries=target/classes/**
+'''
           }
 
         }
