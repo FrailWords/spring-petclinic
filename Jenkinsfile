@@ -26,8 +26,8 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        ansiblePlaybook(playbook: '/opt/conf/playbook.yml', credentialsId: 'app', disableHostKeyChecking: true)
         sh 'ls -l $JENKINS_HOME/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/'
+        ansiblePlaybook(playbook: '/opt/conf/playbook.yml', credentialsId: 'app', disableHostKeyChecking: true)
       }
     }
 
