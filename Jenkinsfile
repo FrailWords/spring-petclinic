@@ -6,7 +6,6 @@ pipeline {
         sh '''./mvnw package
                 '''
         archiveArtifacts(artifacts: 'target/*.jar', allowEmptyArchive: true)
-        sh 'pwd'
       }
     }
 
